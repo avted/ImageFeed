@@ -20,7 +20,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1019607843" green="0.1058823529" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagesListCell" rowHeight="154" id="9Ye-QR-zXy" customClass="ImagesListCell" customModule="ImageFeed" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagesListCell" rowHeight="154" id="9Ye-QR-zXy" customClass="ImagesListCell" customModule="ImageFeed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="154"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Ye-QR-zXy" id="3kX-Qz-b3g">
@@ -36,6 +36,13 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCW-u6-XcT" userLabel="Gradient View" customClass="GradientView" customModule="ImageFeed" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="120" width="361" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="XE4-8s-ybN"/>
+                                                    </constraints>
+                                                </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKi-Oe-n8B" userLabel="Like Button">
                                                     <rect key="frame" x="333" y="4" width="44" height="44"/>
                                                     <constraints>
@@ -55,11 +62,14 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="5wN-wT-tc9" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="agC-fE-NQU" secondAttribute="trailing" constant="8" id="1Hr-Uc-I4W"/>
+                                                <constraint firstItem="5wN-wT-tc9" firstAttribute="trailing" secondItem="eCW-u6-XcT" secondAttribute="trailing" id="69W-V0-doI"/>
                                                 <constraint firstItem="PKi-Oe-n8B" firstAttribute="top" secondItem="5wN-wT-tc9" secondAttribute="top" id="F6y-8n-zqF"/>
                                                 <constraint firstItem="5wN-wT-tc9" firstAttribute="bottom" secondItem="agC-fE-NQU" secondAttribute="bottom" constant="4" id="FHC-KP-nRi"/>
                                                 <constraint firstItem="5wN-wT-tc9" firstAttribute="top" secondItem="3kX-Qz-b3g" secondAttribute="top" constant="4" id="GeE-Aw-Fuf"/>
+                                                <constraint firstItem="5wN-wT-tc9" firstAttribute="bottom" secondItem="eCW-u6-XcT" secondAttribute="bottom" id="JGb-fp-O4f"/>
                                                 <constraint firstAttribute="trailing" secondItem="5wN-wT-tc9" secondAttribute="trailing" constant="16" id="Qjv-sr-moZ"/>
                                                 <constraint firstAttribute="bottom" secondItem="5wN-wT-tc9" secondAttribute="bottom" constant="4" id="V9X-Tf-Mhm"/>
+                                                <constraint firstItem="eCW-u6-XcT" firstAttribute="leading" secondItem="5wN-wT-tc9" secondAttribute="leading" id="aZm-Pr-xdf"/>
                                                 <constraint firstItem="agC-fE-NQU" firstAttribute="leading" secondItem="5wN-wT-tc9" secondAttribute="leading" constant="8" id="bSU-Os-8WH"/>
                                                 <constraint firstItem="5wN-wT-tc9" firstAttribute="leading" secondItem="3kX-Qz-b3g" secondAttribute="leading" constant="16" id="d9t-UW-r4m"/>
                                                 <constraint firstItem="5wN-wT-tc9" firstAttribute="trailing" secondItem="PKi-Oe-n8B" secondAttribute="trailing" id="w7Y-8H-uZA"/>
@@ -88,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="135"/>
+            <point key="canvasLocation" x="135.1145038167939" y="134.50704225352112"/>
         </scene>
     </scenes>
     <resources>

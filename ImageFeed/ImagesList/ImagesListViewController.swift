@@ -25,11 +25,16 @@ final class ImagesListViewController: UIViewController {
         return formatter
     }()
     
+    private let gradientView = GradientView()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.contentInset = Constants.tableViewContentInset
+        
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(gradientView)
     }
 }
 
