@@ -39,7 +39,7 @@ final class GradientView: UIView {
     
     private func updateColors() {
         gradientLayer.colors = [
-            gradientColor.withAlphaComponent(0.2).cgColor,
+            gradientColor.withAlphaComponent(0.3).cgColor,
             gradientColor.withAlphaComponent(0.0).cgColor
         ]
     }

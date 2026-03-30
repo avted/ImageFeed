@@ -10,6 +10,8 @@ final class ImagesListViewController: UIViewController {
         
         static let likeOnImageName = "like_on"
         static let likeOffImageName = "like_off"
+        
+        static let showSingleImageSegueIdentifier = "ShowSingleImage"
     }
     
     // MARK: - IBOutlets
@@ -35,6 +37,24 @@ final class ImagesListViewController: UIViewController {
         
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(gradientView)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.showSingleImageSegueIdentifier {
+            guard
+                let viewController = segue.destination as? SingleImageViewController,
+                let indexPath = sender as? IndexPath
+            else {
+                assertionFailure("Invalid segue destination")
+                return
+            }
+            
+            let image = UIImage(named: photoNames[indexPath.row])
+            _ = viewController.view // CRASH FIXED !?
+            viewController.imageView.image = image
+        } else {
+            super.prepare(for: segue, sender: sender)
+        }
     }
 }
 
@@ -69,6 +89,10 @@ extension ImagesListViewController: UITableViewDelegate {
         let scale = imageViewWidth / imageWidth
         let cellHeight = image.size.height * scale + Constants.imageInsets.top + Constants.imageInsets.bottom
         return cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Constants.showSingleImageSegueIdentifier, sender: indexPath)
     }
 }
 
