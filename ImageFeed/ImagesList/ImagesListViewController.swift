@@ -50,7 +50,7 @@ final class ImagesListViewController: UIViewController {
             }
             
             let image = UIImage(named: photoNames[indexPath.row])
-            _ = viewController.view // CRASH FIXED !?
+            _ = viewController.view
             viewController.imageView.image = image
         } else {
             super.prepare(for: segue, sender: sender)
