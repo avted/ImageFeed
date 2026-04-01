@@ -4,12 +4,7 @@ final class ProfileViewController: UIViewController {
     
     // MARK: - Constants
     private enum Constants {
-        static let userImageName = "avatar"
         static let logoutIconName = "ipad.and.arrow.forward"
-        static let colorWhite = "YP White"
-        static let colorGray = "YP Gray"
-        static let colorRed = "YP Red"
-        
         static let headlineFontSize: CGFloat = 23
         static let standardFontSize: CGFloat = 13
     }
@@ -21,71 +16,61 @@ final class ProfileViewController: UIViewController {
     }
     
     // MARK: - UI Elements
-    private var imageView: UIImageView!
-    private var nameLabel: UILabel!
-    private var loginLabel: UILabel!
-    private var descriptionLabel: UILabel!
-    private var logoutButton: UIButton!
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(resource: .avatar))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.text = MockData.name
+        label.textColor = UIColor(resource: .ypWhite)
+        label.font = UIFont.boldSystemFont(ofSize: Constants.headlineFontSize)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var loginLabel: UILabel = {
+        let label = UILabel()
+        label.text = MockData.login
+        label.textColor = UIColor(resource: .ypGray)
+        label.font = UIFont.systemFont(ofSize: Constants.standardFontSize)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = MockData.description
+        label.textColor = UIColor(resource: .ypWhite)
+        label.font = UIFont.systemFont(ofSize: Constants.standardFontSize)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var logoutButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: Constants.logoutIconName), for: .normal)
+        button.addTarget(self, action: #selector(didTapLogoutButton), for: .touchUpInside)
+        button.tintColor = UIColor(resource: .ypRed)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        createViews()
+        setupViews()
         setupConstraints()
     }
     
-    // MARK: - Create Views
-    private func createViews() {
-        createImageView()
-        createNameLabel()
-        createLoginLabel()
-        createGreetingLabel()
-        createLogoutButton()
-    }
-    
-    private func createImageView() {
-        let profileImage = UIImage(named: Constants.userImageName)
-        imageView = UIImageView(image: profileImage)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+    // MARK: - Setup Views
+    private func setupViews() {
         view.addSubview(imageView)
-    }
-    
-    private func createNameLabel() {
-        nameLabel = UILabel()
-        nameLabel.text = MockData.name
-        nameLabel.textColor = UIColor(named: Constants.colorWhite)
-        nameLabel.font = UIFont.boldSystemFont(ofSize: Constants.headlineFontSize)
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nameLabel)
-    }
-    
-    private func createLoginLabel() {
-        loginLabel = UILabel()
-        loginLabel.text = MockData.login
-        loginLabel.textColor = UIColor(named: Constants.colorGray)
-        loginLabel.font = UIFont.systemFont(ofSize: Constants.standardFontSize)
-        loginLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(loginLabel)
-    }
-    
-    private func createGreetingLabel() {
-        descriptionLabel = UILabel()
-        descriptionLabel.text = MockData.description
-        descriptionLabel.textColor = UIColor(named: Constants.colorWhite)
-        descriptionLabel.font = UIFont.systemFont(ofSize: Constants.standardFontSize)
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(descriptionLabel)
-    }
-    
-    private func createLogoutButton() {
-        logoutButton = UIButton(type: .system)
-        let icon = UIImage(systemName: Constants.logoutIconName)
-        
-        logoutButton.setImage(icon, for: .normal)
-        logoutButton.addTarget(self, action: #selector(didTapLogoutButton), for: .touchUpInside)
-        
-        logoutButton.tintColor = UIColor(named: Constants.colorRed)
-        logoutButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(logoutButton)
     }
     
